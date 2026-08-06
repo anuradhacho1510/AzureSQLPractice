@@ -1,0 +1,81 @@
+{
+	"name": "SourceDataset_78q",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "BusinessPartners.csv",
+				"container": "sa-sales-erp"
+			},
+			"columnDelimiter": ";",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PARTNERID",
+				"type": "String"
+			},
+			{
+				"name": "PARTNERROLE",
+				"type": "String"
+			},
+			{
+				"name": "EMAILADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "PHONENUMBER",
+				"type": "String"
+			},
+			{
+				"name": "FAXNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "WEBADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSID",
+				"type": "String"
+			},
+			{
+				"name": "COMPANYNAME",
+				"type": "String"
+			},
+			{
+				"name": "LEGALFORM",
+				"type": "String"
+			},
+			{
+				"name": "CREATEDBY",
+				"type": "String"
+			},
+			{
+				"name": "CREATEDAT",
+				"type": "String"
+			},
+			{
+				"name": "CHANGEDBY",
+				"type": "String"
+			},
+			{
+				"name": "CHANGEDAT",
+				"type": "String"
+			},
+			{
+				"name": "CURRENCY",
+				"type": "String"
+			}
+		]
+	}
+}
