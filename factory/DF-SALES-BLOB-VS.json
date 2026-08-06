@@ -1,0 +1,15 @@
+{
+	"name": "DF-SALES-BLOB-VS",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fa38221b-24c5-41ca-8e80-8ff62373639c",
+		"tenantId": "102ca485-4684-47e0-84e6-52023d738dd2"
+	}
+}
