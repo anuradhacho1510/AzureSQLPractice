@@ -15,8 +15,8 @@
 				},
 				"userProperties": [
 					{
-						"name": "Source",
-						"value": "sa-sales-erp//SalesOrderItems.csv"
+						"name": "dbo",
+						"value": "SalesOrderItems"
 					}
 				],
 				"typeProperties": {
