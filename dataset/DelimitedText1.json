@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "SalesOrderItems.csv",
+				"fileName": "SalesOrders.csv",
 				"container": "sa-sales-erp"
 			},
 			"columnDelimiter": ";",
