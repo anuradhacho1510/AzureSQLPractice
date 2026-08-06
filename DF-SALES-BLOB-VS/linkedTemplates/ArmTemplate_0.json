@@ -143,7 +143,7 @@
 						"fileName": "BusinessPartners.csv",
 						"container": "sa-sales-erp"
 					},
-					"columnDelimiter": ",",
+					"columnDelimiter": ";",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
