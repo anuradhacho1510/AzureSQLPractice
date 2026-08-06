@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_7mm",
+				"name": "Copy data from csv to sql db",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
