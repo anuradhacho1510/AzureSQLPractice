@@ -161,7 +161,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "BusinessPartners.csv",
+						"fileName": "SalesOrderItems.csv",
 						"container": "sa-sales-erp"
 					},
 					"columnDelimiter": ";",
