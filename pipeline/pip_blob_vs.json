@@ -17,10 +17,6 @@
 					{
 						"name": "Source",
 						"value": "sa-sales-erp//SalesOrderItems.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "dbo.SalesOrderItems"
 					}
 				],
 				"typeProperties": {
