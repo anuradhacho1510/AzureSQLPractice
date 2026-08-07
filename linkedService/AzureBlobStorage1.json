@@ -7,7 +7,7 @@
 			"serviceEndpoint": "https://sainputsales.blob.core.windows.net/",
 			"accountKind": "StorageV2",
 			"credential": {
-				"referenceName": "credential1",
+				"referenceName": "mi-blob-credential",
 				"type": "CredentialReference"
 			}
 		}
