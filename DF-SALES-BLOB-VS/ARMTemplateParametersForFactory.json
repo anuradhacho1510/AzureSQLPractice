@@ -5,17 +5,14 @@
 		"factoryName": {
 			"value": "DF-SALES-BLOB-VS"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"value": ""
-		},
 		"AzureSqlDatabase1_password": {
-			"value": ""
-		},
-		"AzureSqlDatabase2_password": {
 			"value": ""
 		},
 		"AzureSqlDatabase3_password": {
 			"value": ""
+		},
+		"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+			"value": "https://sainputsales.blob.core.windows.net/"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"value": "sales-db-dev.database.windows.net"
@@ -32,9 +29,6 @@
 		"AzureSqlDatabase2_properties_typeProperties_database": {
 			"value": "SALES_DB_DEV1"
 		},
-		"AzureSqlDatabase2_properties_typeProperties_userName": {
-			"value": "anuradha1510"
-		},
 		"AzureSqlDatabase3_properties_typeProperties_server": {
 			"value": "sales-db-dev.database.windows.net"
 		},
@@ -43,6 +37,12 @@
 		},
 		"AzureSqlDatabase3_properties_typeProperties_userName": {
 			"value": "anuradha1510"
+		},
+		"ls_lookup_sql_properties_typeProperties_server": {
+			"value": "sales-db-dev.database.windows.net"
+		},
+		"ls_lookup_sql_properties_typeProperties_database": {
+			"value": "SALES_DB_DEV1"
 		}
 	}
 }
