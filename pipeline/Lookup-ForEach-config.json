@@ -100,7 +100,7 @@
 											"type": "Expression"
 										},
 										"FileName": {
-											"value": "@item().TableName",
+											"value": "@item().FileName",
 											"type": "Expression"
 										}
 									}
