@@ -111,7 +111,7 @@
 									"referenceName": "AzureSqlTable1",
 									"type": "DatasetReference",
 									"parameters": {
-										"TableName": {
+										"DestinationTable": {
 											"value": "@item().DestinationTable",
 											"type": "Expression"
 										}
