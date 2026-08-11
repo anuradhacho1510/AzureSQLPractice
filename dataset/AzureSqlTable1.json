@@ -6,8 +6,8 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"DestinationTable": {
-				"type": "string"
+			"FileName": {
+				"type": "String"
 			}
 		},
 		"annotations": [],
@@ -16,7 +16,7 @@
 		"typeProperties": {
 			"schema": "dbo",
 			"table": {
-				"value": "@dataset().DestinationTable",
+				"value": "@dataset().FileName",
 				"type": "Expression"
 			}
 		}
