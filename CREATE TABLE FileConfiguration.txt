@@ -1,0 +1,23 @@
+CREATE TABLE FileConfiguration
+(
+    ID INT IDENTITY(1,1),
+    ContainerName NVARCHAR(100),
+    FolderName NVARCHAR(100),
+    FileName NVARCHAR(100),
+    DestinationTable NVARCHAR(100),
+    IsActive BIT
+);
+
+DELETE FROM FileConfiguration
+
+INSERT INTO FileConfiguration
+(ContainerName,FolderName,FileName,DestinationTable,IsActive)
+
+VALUES
+
+
+('sa-sales-erp','','SalesOrderItems.csv','SalesOrderItems',1),
+
+('sa-sales-erp','','BusinessPartners.csv','BusinessPartners',1),
+
+('sa-sales-erp','','SalesOrders.csv','SalesOrders',1);

@@ -1,0 +1,11 @@
+INSERT INTO FileConfiguration
+(ContainerName,FolderName,FileName,DestinationTable,IsActive)
+
+VALUES
+('sa-sales-erp','','SalesOrderitems.csv','SalesOrderitems',1),
+
+('sa-sales-erp','','BusinessPartners.csv','BusinessPartners',1),
+
+('sa-sales-erp','','SalesOrders.csv','SalesOrders',1);
+
+DELETE   FROM FileConfiguration

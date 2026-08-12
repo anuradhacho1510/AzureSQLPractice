@@ -1,0 +1,11 @@
+CREATE USER [mi-adf-shared]
+FROM EXTERNAL PROVIDER;
+
+ALTER ROLE db_datareader
+ADD MEMBER [mi-adf-shared];
+
+ALTER ROLE db_datawriter
+ADD MEMBER [mi-adf-shared];
+
+ALTER ROLE db_owner
+ADD MEMBER [mi-adf-shared];
