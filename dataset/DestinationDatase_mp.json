@@ -1,0 +1,41 @@
+{
+	"name": "DestinationDatase_mp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_miniprj",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "OrderDate",
+				"type": "date"
+			},
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "SourceFile",
+				"type": "varchar"
+			},
+			{
+				"name": "LoadedAt",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "SalesData"
+		}
+	}
+}
