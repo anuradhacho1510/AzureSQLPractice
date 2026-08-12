@@ -1,0 +1,18 @@
+{
+	"name": "AzureSqlDatabase_miniprj",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sales-db-dev.database.windows.net",
+			"database": "SALES_DB_DEV1",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "UserAssignedManagedIdentity",
+			"credential": {
+				"referenceName": "mi-blob-credential",
+				"type": "CredentialReference"
+			}
+		}
+	}
+}
