@@ -86,7 +86,14 @@
 						{
 							"name": "Copy data-mp",
 							"type": "Copy",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Get Metadata-foreach-mp",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -164,6 +171,43 @@
 							"typeProperties": {
 								"variableName": "NewWatermark",
 								"value": "@if(\n    empty(variables('NewWatermark')),\n    activity('Get Metadat-mp').output.lastModified,\n    if(\n        greater(\n            activity('Get Metadat-mp').output.lastModified,\n            variables('NewWatermark')\n        ),\n        activity('Get Metadat-mp').output.lastModified,\n        variables('NewWatermark')\n    )\n)"
+							}
+						},
+						{
+							"name": "Get Metadata-foreach-mp",
+							"type": "GetMetadata",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "DS_Blob_Folder",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": {
+											"value": "@item().Container",
+											"type": "Expression"
+										},
+										"FileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								},
+								"fieldList": [],
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
 							}
 						}
 					]
