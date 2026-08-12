@@ -144,6 +144,27 @@
 									"type": "DatasetReference"
 								}
 							]
+						},
+						{
+							"name": "Variable-mp",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Copy data-mp",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "NewWatermark",
+								"value": "@if(\n    empty(variables('NewWatermark')),\n    activity('Get Metadat-mp').output.lastModified,\n    if(\n        greater(\n            activity('Get Metadat-mp').output.lastModified,\n            variables('NewWatermark')\n        ),\n        activity('Get Metadat-mp').output.lastModified,\n        variables('NewWatermark')\n    )\n)"
+							}
 						}
 					]
 				}
