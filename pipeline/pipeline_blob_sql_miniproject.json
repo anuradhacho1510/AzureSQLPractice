@@ -49,7 +49,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_Blob_Folder",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Container": {
+								"value": "@activity('Lookup-mp').output.firstRow.ContainerName",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -88,9 +94,9 @@
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Get Metadata-foreach-mp",
+									"activity": "If Condition2",
 									"dependencyConditions": [
-										"Completed"
+										"Succeeded"
 									]
 								}
 							],
@@ -191,11 +197,129 @@
 									"type": "DelimitedTextReadSettings"
 								}
 							}
+						},
+						{
+							"name": "If Condition2",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata-foreach-mp",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@greater(\n    activity('Get Metadata-foreach-mp').output.lastModified,\n    activity('Lookup-mp').output.firstRow.WatermarkValue\n)",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Copy data-mp",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "NewWatermark",
+								"value": "@if(\n  greater(activity('Get File Metadata').output.lastModified, variables('NewWatermark')),\n  activity('Get File Metadata').output.lastModified,\n  variables('NewWatermark')\n)"
+							}
+						},
+						{
+							"name": "SendFailureAlertWeb",
+							"type": "WebActivity",
+							"dependsOn": [
+								{
+									"activity": "Copy data-mp",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"url": "https://prod-09.northcentralus.logic.azure.com:443/workflows/352b5bd10596485e8d35d5aad054e961/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=rstP8ixGZOl2wgtRVxv94BNGglqpJb55S9_QYYAm0as",
+								"body": {
+									"pipelineName": "@{pipeline().Pipeline}",
+									"errorMessage": "@{activity('Copy data-mp').error.message}",
+									"runId": "@{pipeline().RunId}",
+									"failedTime": "@{utcnow()}"
+								}
+							}
 						}
 					]
 				}
+			},
+			{
+				"name": "Stored procedure-updateWaterMark",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "ForEach-mp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[usp_update_watermark]",
+					"storedProcedureParameters": {
+						"TableName": {
+							"value": "SalesData",
+							"type": "String"
+						},
+						"NewWatermark": {
+							"value": {
+								"value": "@variables('NewWatermark')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_miniprj",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
+		"parameters": {
+			"COntainer": {
+				"type": "String"
+			},
+			"name": {
+				"type": "String"
+			}
+		},
 		"variables": {
 			"NewWatermark": {
 				"type": "String"
